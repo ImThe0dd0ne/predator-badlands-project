@@ -25,7 +25,6 @@ class BossTests(unittest.TestCase):
         boss.get_more_angry(2)
         self.assertEqual(boss.get_anger_level(), starting_anger + 2)
         
-        # caps at maximum anger
         boss.get_more_angry(10)
         self.assertEqual(boss.get_anger_level(), 10)
 
@@ -43,7 +42,7 @@ class BossTests(unittest.TestCase):
         boss = Adversary(Location(0, 0))
         start_anger = boss.get_anger_level()
         
-        boss.take_damage(30)  # Big hit
+        boss.take_damage(30) 
         
         self.assertGreater(boss.get_anger_level(), start_anger)
 
