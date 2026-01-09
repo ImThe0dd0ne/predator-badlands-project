@@ -74,7 +74,7 @@ class BaseAgent(ABC):
 
     @abstractmethod
     def get_symbol(self) -> str:
-        #Character icon for display
+        #The character icon
         pass
 
     def __str__(self) -> str:

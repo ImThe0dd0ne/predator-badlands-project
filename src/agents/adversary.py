@@ -23,7 +23,6 @@ class Adversary(BaseAgent):
         if not self.use_stamina(15):
             return 0  
 
-        # Angrier = more damage
         damage = self.__base_damage + (self.__anger * 2)
         # Some random variation in hits
         damage = random.randint(int(damage * 0.8), int(damage * 1.2))
@@ -32,14 +31,13 @@ class Adversary(BaseAgent):
         return damage
 
     def take_damage(self, damage: int) -> None:
-        # Still takes normal damage
         super().take_damage(damage)
-        # But gets angrier when its hit harder
+        # gets angrier when its hit harder
         if damage > 20:
             self.get_more_angry(1)
 
     def move_toward_target(self, target_spot: Location, grid) -> bool:
-        # Moving toward something costs energy
+        # In pursuit however it costs stamina to do so
         if not self.use_stamina(8):
             return False
 
@@ -49,7 +47,6 @@ class Adversary(BaseAgent):
         x_diff = target_spot.get_x() - current_pos.get_x()
         y_diff = target_spot.get_y() - current_pos.get_y()
 
-        # Pick a direction (not diagonal)
         move_x = 0 if x_diff == 0 else (1 if x_diff > 0 else -1)
         move_y = 0 if y_diff == 0 else (1 if y_diff > 0 else -1)
 
@@ -75,12 +72,11 @@ class Adversary(BaseAgent):
         if not self.is_alive():
             return
 
-        # Rest if running low on energy
+        # Rests if stamina meter is low
         if self.get_stamina() < 30:
             self.rest(40)
             return
 
-        # Otherwise wander around
         nearby_spots = grid.get_adjacent_locations(self.get_location())
         open_spots = [spot for spot in nearby_spots if grid.is_walkable(spot)]
 
@@ -92,7 +88,7 @@ class Adversary(BaseAgent):
                 grid.place_agent(self, chosen_spot)
 
     def get_symbol(self) -> str:
-        # Map icon for the boss
+        # The map icon for the boss
         return "A"
 
     def __str__(self) -> str:

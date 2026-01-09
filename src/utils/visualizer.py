@@ -71,11 +71,9 @@ class ConsoleVisualizer:
         display.append("=" * 50)
         display.append("")
         
-        #The games world
         display.append(self.draw_grid(game.get_grid(), show_numbers=True))
         display.append("")
         
-        #What is what
         display.append("Map Key:")
         display.append("  D = Dek (You)")
         display.append("  S = Thia (Android)")
@@ -117,9 +115,9 @@ class ConsoleVisualizer:
         if game.game_ended():
             display.append("=" * 50)
             if game.did_win():
-                display.append("VICTORY! Dek proved his worth!")
+                display.append("VICTORY! Dek has now proved his worth!")
             else:
-                display.append("DEFEAT! Dek has fallen...")
+                display.append("DEFEAT! Dek has fallen and lost...")
             display.append("=" * 50)
         
         return "\n".join(display)

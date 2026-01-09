@@ -44,7 +44,7 @@ class Simulation:
         }
 
     def setup(self):
-        #Put everything in starting positions
+        #Puts everything in starting positions
         #Dek starts
         dek_start = Location(2, 2)
         self.__dek = Predator("Dek", dek_start, health=150, stamina=120)
@@ -100,7 +100,7 @@ class Simulation:
                 self.__grid.set_cell_type(spot, CellType.OBSTACLE)
 
     def __add_traps(self):
-        #Places some dangerous spots
+        #Places some dangerous areas
         for _ in range(10):
             x = random.randint(0, self.__grid.get_width() - 1)
             y = random.randint(0, self.__grid.get_height() - 1)

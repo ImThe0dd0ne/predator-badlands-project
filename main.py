@@ -25,10 +25,10 @@ for turn in range(1, 11):
         print('Game over!')
         break
 
-print('\\n' + '=' * 50)
+print('\n' + '=' * 50)
 print('The final results:')
 print('=' * 50)
 results = game.get_results()
 print(viz.show_results(results))
 
-print('Simulation done and everything is working!')
+print('Simulation is now done and everything is working!')

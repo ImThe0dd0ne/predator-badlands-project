@@ -2,9 +2,9 @@ from agents.base_agent import BaseAgent
 from utils.location import Location
 
 class Synthetic(BaseAgent):
-    # Android assistant is damaged but intelligent
+    # Thia is damaged but intelligent
     def __init__(self, name: str, location: Location, health: int = 80, damaged: bool = True):
-        # Always call super with the MAX health (80), then reduce if needed
+        # call super with the max health at 80, then reduces if needed
         super().__init__(location, 80, stamina=50)  # Max HP is 80
         self.__name = name
         self.__damaged = damaged
@@ -26,7 +26,7 @@ class Synthetic(BaseAgent):
 
     def repair(self, amount: int):
         self.heal(amount)
-        # it can move if its health is good enough
+        # able move if its health is good enough
         if self.get_health() > 60:
             self.__cant_move = False
             self.__damaged = False
@@ -39,13 +39,13 @@ class Synthetic(BaseAgent):
 
     def give_advice(self, situation: str) -> str:
         if "adversary" in situation.lower():
-            return "The boss is dangerous - be careful and plan ahead"
+            return "wait you need to really be careful here"
         elif "stamina" in situation.lower():
-            return "Maybe rest up before fighting"
+            return "You could rest first"
         elif "hunt" in situation.lower():
-            return "Remember the hunter code - only fight worthy foes"
+            return "You must remember your code you follow only fight those which are worth being hunted"
         else:
-            return "Be smart about your next move"
+            return "you need to be watch out and be smart here"
 
     def scan_area(self, grid, distance: int = 3):
         findings = []
